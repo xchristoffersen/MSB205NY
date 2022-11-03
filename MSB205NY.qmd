@@ -222,8 +222,13 @@ st_write(kc_houses_env_var_omit, "maps/kc_houses_env_var_omit.gpkg", append = FA
 
 ## i - iii.
 
-Vektmatrise 3 nærmeste nabo
+Vektmatrise 3 nærmeste nabo:
 
+![](screen/3.png)
 
+Vektmatise 10 nærmeste nabo:
 
-Vektmatise 3 nærmeste nabo
+![](screen/10.png)
+
+## iv.
+
