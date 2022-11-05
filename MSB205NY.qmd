@@ -1,7 +1,11 @@
 ---
-title: "MSB205NY"
+title: "Arbeidskrav i MSB205"
+author: 
+- Jonathan Christoffersen
+- Daniel Karstad
 format: html
 editor: visual
+lang: no-NB
 ---
 
 ```{r}
@@ -231,4 +235,82 @@ Vektmatise 10 nærmeste nabo:
 ![](screen/10.png)
 
 ## iv.
+
+3:
+
+Små og dyre:
+
+![](screen/HL3.png)
+
+Store og dyre:
+
+![](screen/HH3.png)
+
+Billige og store:
+
+![](screen/LH3.png)
+
+Små og billige:
+
+![](screen/LL3.png)
+
+10:
+
+Små og dyre:
+
+![](screen/HL10.png)
+
+Store og dyre:
+
+![](screen/HH10.png)
+
+Billige og store:
+
+![](screen/LH10.png)
+
+Små og billige:
+
+![](screen/LL10.png)
+
+# Oppgave 6
+
+## i. Funn fra EDA
+
+## ii. Hedoniske modeller
+
+### Huskarakteristika og tids-dummier
+
+```{r, message=FALSE}
+attach(kc_houses_env_var_omit)
+```
+
+```{r}
+mod1 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month"
+```
+
+### Huskarakteristika, dist_CBD, tract-variabler og tids-dummier
+
+```{r}
+mod2 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month + dist_cbd_km + linguist_2 + poverty_pe + POC_percen + unemploy_2 + sen_pop_pe + facilities + wastewater + traffic_pe + diesel + superfund + transporta + housing_pe + ozone + PM25 + toxic_rele + hazardous_ + lead_perce + socio_perc"
+```
+
+### Huskarakteristika, dist_CBD, EHD og tids-dummier
+
+```{r}
+mod3 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_living15 + sqft_lot + sqft_lot15 + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high + year_month"
+```
+
+```{r}
+hedon1 <- lm(mod1, data = kc_houses_env_var_omit)
+hedon2 <- lm(mod2, data = kc_houses_env_var_omit)
+hedon3 <- lm(mod3, data = kc_houses_env_var_omit)
+```
+
+## iii.
+
+```{r}
+huxreg("Hedon1" = hedon1, "Hedon2" = hedon2, "Hedon3" = hedon3, 
+    error_format = "[{statistic}]",
+    note = "{stars}. T statistic in brackets.")
+```
 
