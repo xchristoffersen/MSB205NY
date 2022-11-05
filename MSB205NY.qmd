@@ -31,6 +31,8 @@ options(scipen = 777)
 
 # Oppgave 1
 
+
+
 # Oppgave 2
 
 ## i.
@@ -313,4 +315,114 @@ huxreg("Hedon1" = hedon1, "Hedon2" = hedon2, "Hedon3" = hedon3,
     error_format = "[{statistic}]",
     note = "{stars}. T statistic in brackets.")
 ```
+
+Funn fra regresjonstabellen:
+
+Etter å ha sammenlignet de tre ulike hedoniske modellene så ser vi at *mod1* har 0,65, *mod2* 0,76 og *mod3* med 0,74. Forskjellen mellom *mod2* og *mod3* er at *mod2* sin forklaringskraft er marginalt noe høyere, men dette kan forklares ved at denne modellen innehar flere variabler. Vi velger dermed å gå videre med *mod3* siden denne har færre variabler og jobbe med, samt at denne modellen inneholder variabelen *EHD_percen* som inneholder de miljømessige variablene vi finner i *mod2*.
+
+## iv.
+
+```{r, fig.width=3, fig.height=3}
+hedon1 %>% 
+  plot()
+```
+
+```{r, fig.width=3, fig.width=3}
+hedon2 %>% 
+    plot()
+```
+
+```{r, fig.width=3, fig.width=3}
+hedon3 %>% 
+    plot()
+```
+
+# Oppgave 7
+
+```{r}
+hedon1 %>% 
+    linearHypothesis(c("year_month2014-06=0", "year_month2014-07=0",
+                       "year_month2014-08=0", "year_month2014-09=0",
+                       "year_month2014-10=0", "year_month2014-11=0",
+                       "year_month2014-12=0", "year_month2015-01=0",
+                       "year_month2015-02=0", "year_month2015-03=0",
+                       "year_month2015-04=0", "year_month2015-05=0"),
+                     white_adjust = hc3)
+```
+
+
+```{r}
+hedon2 %>% 
+    linearHypothesis(c("year_month2014-06=0", "year_month2014-07=0",
+                       "year_month2014-08=0", "year_month2014-09=0",
+                       "year_month2014-10=0", "year_month2014-11=0",
+                       "year_month2014-12=0", "year_month2015-01=0",
+                       "year_month2015-02=0", "year_month2015-03=0",
+                       "year_month2015-04=0", "year_month2015-05=0"),
+                     white_adjust = hc4)
+```
+
+
+```{r}
+hedon3 %>% 
+    linearHypothesis(c("year_month2014-06=0", "year_month2014-07=0",
+                       "year_month2014-08=0", "year_month2014-09=0",
+                       "year_month2014-10=0", "year_month2014-11=0",
+                       "year_month2014-12=0", "year_month2015-01=0",
+                       "year_month2015-02=0", "year_month2015-03=0",
+                       "year_month2015-04=0", "year_month2015-05=0"),
+                     white_adjust = hc1)
+```
+
+**Konklusjon:**
+
+Etter å ha utført en simultan test på tids-dummyene så kan vi avgjøre at disse er nødvendige for modellen. Nullhypotesen er om det ikke vil være noen forskjell i salgspris ved ulike tidspunkt for salg. Men testene våre fremviser signifikante F- og P-verdier som medfører at vi forkaster denne nullhypotesen. Konklusjonen vil dermed være at det faktisk fremkommer en forskjell i salgspris ved forskjellige tidspunkt for salg. 
+
+# Oppgave 8
+
+```{r}
+kc_house_data_4444 <- here("data/kc_house_data_4444_Jonathan_og_Daniel.gpkg") %>% 
+  st_read() %>% 
+  st_transform(2926)
+```
+
+```{r}
+kc_house_data_4444 <-  kc_house_data_4444 %>% 
+  mutate(
+    dist_cbd = st_distance(cbd, ., by_element = TRUE),
+    dist_cbd_km = set_units(dist_cbd, km),
+    year_month = substr(date, start = 1, stop = 7))
+kc_house_data_4444 <- kc_house_data_4444 %>% 
+    rename(low = inc_fam_low_per,
+           mid = inc_fam_med_per,
+           high = inc_fam_high_per)
+```
+
+```{r}
+hedon3_seed <- lm(mod3, data = kc_house_data_4444)
+```
+
+```{r}
+huxreg("Full" = hedon3, "Seed" = hedon3_seed, 
+    error_format = "[{statistic}]",
+    note = "{stars}. T statistic in brackets.")
+```
+
+```{r}
+kc_house_data_4444_mat_nb <- knearneigh(kc_house_data_4444, k = 3)
+kc_house_data_4444_nb <- knn2nb(kc_house_data_4444_mat_nb)
+kc_house_data_4444_W <- nb2listw(kc_house_data_4444_nb, style = "W")
+```
+
+```{r}
+kc_house_data_4444_mat_nb10 <- knearneigh(kc_house_data_4444, k = 10)
+kc_house_data_4444_nb10 <- knn2nb(kc_house_data_4444_mat_nb10)
+kc_house_data_4444_W10 <- nb2listw(kc_house_data_4444_nb10, style = "W")
+```
+
+```{r}
+lm.morantest(hedon3_seed, kc_house_data_4444_W)
+lm.morantest(hedon3_seed, kc_house_data_4444_W10)
+```
+
 
