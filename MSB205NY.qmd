@@ -6,6 +6,7 @@ author:
 date: "Innleveringsfrist: 10.11.2022"
 format: html
 editor: visual
+bibliography: citations.bib
 lang: no-NB
 ---
 
@@ -33,7 +34,7 @@ options(scipen = 777)
 # Oppgave 1 - Artikkelsammendrag
 
 Dette sammendraget fokuserer på Bishop et al. (2020) sin artikkel som tar for seg hedoniske eiendomsverdimodeller som den beste praksisen når formålet er å måle husholdningens betalingsvillighet for en endring i en miljøfasilitet. Her estimerer man en fleksibel boligprisfunksjon, som er hentet fra data om salgspriser og fysiske attributter ved boligen, som videre deriveres for å tolke fasilitetenes sine implisitte priser. Disse implisitte prisene kan da benyttes til å framskaffe husholdningens marginale betalingsvillighet (MWTP). Datamateriale fra boligmarkeder i avanserte økonomier sine storbyer er benyttet for å etablere de beste praksisene for hedonisk modellformulering.
-Rosen´s (1974) første og andre steg er ansett som de to beste praksisene for den hedoniske modellen.
+Rosen´s (1974) første og andre steg er ansett som de to beste praksisene for den hedoniske modellen. 
 
 Det første steget omhandler definisjonen av markedet. Her tar man for seg logikken av den hedoniske modellformuleringen om at markedet skal være definert slik at det tilfredsstiller prinsippet om loven av en prisfunksjon (*law of one price function*).Dette vil si at salg av identiske boliger vil ta for seg like priser gjennom det bestemte boligmarkedet.Når markedet er definert så vil man kunne gå over til Rosen´s andre steg, som er å samle inn data. Den beste praksisen, altså gullstandarden for datasamlingen innen hedoniske eiendomsverdistudier er å anskaffe et tilfeldig utvalg av prisene til boligtransaksjonene, i tillegg til karakteristika av det relevante studieområdet.
 
@@ -651,6 +652,9 @@ moran.test(residuals(SDEM_2000), listw = kc_house_data_2000_W10)
 
 # Oppgave 10 - Konklusjon
 
+
+
+# References
 
 
 
