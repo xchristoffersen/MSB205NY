@@ -3,6 +3,7 @@ title: "Arbeidskrav i MSB205"
 author: 
 - Jonathan Christoffersen
 - Daniel Karstad
+date: "Innleveringsfrist: 10.11.2022"
 format: html
 editor: visual
 lang: no-NB
@@ -29,7 +30,7 @@ library(ragg)
 options(scipen = 777)
 ```
 
-# Oppgave 1
+# Oppgave 1 - Artikkelsammendrag
 
 Dette sammendraget fokuserer på Bishop et al. (2020) sin artikkel som tar for seg hedoniske eiendomsverdimodeller som den beste praksisen når formålet er å måle husholdningens betalingsvillighet for en endring i en miljøfasilitet. Her estimerer man en fleksibel boligprisfunksjon, som er hentet fra data om salgspriser og fysiske attributter ved boligen, som videre deriveres for å tolke fasilitetenes sine implisitte priser. Disse implisitte prisene kan da benyttes til å framskaffe husholdningens marginale betalingsvillighet (MWTP). Datamateriale fra boligmarkeder i avanserte økonomier sine storbyer er benyttet for å etablere de beste praksisene for hedonisk modellformulering.
 Rosen´s (1974) første og andre steg er ansett som de to beste praksisene for den hedoniske modellen.
@@ -57,6 +58,8 @@ For å illustrere, dersom boligkjøpere med god økonomi og utdanning velger å 
 # Oppgave 2
 
 ## i.
+
+Har sett over definisjonene.
 
 ## ii.
 
@@ -297,7 +300,9 @@ Små og billige:
 
 # Oppgave 6
 
-## i. Funn fra EDA
+## i. Funn fra EDA*
+
+
 
 ## ii. Hedoniske modeller
 
@@ -465,4 +470,187 @@ kc_lagrange_10 <- lm.LMtests(hedon3_seed, kc_house_data_4444_W10,
                test = "all")
 kc_lagrange_10
 ```
+
+```{r}
+SDEM_seed <- errorsarlm(mod3, data = kc_house_data_4444, listw = kc_house_data_4444_W,
+                        Durbin = as.formula(~ bedrooms + bathrooms + sqft_living +
+                                                sqft_living15 + sqft_lot + sqft_lot15 +
+                                                sqft_above + floors + grade + yr_built +
+                                                yr_renovated + waterfront + condition +
+                                                view + dist_cbd_km + EHD_percen +
+                                                low + high))
+```
+
+```{r}
+SLX_seed <- lmSLX(mod3, data = kc_house_data_4444, listw = kc_house_data_4444_W,
+                  Durbin =  as.formula(~ bedrooms + bathrooms + sqft_living +
+                                           sqft_living15 + sqft_lot + sqft_lot15 +
+                                           sqft_above + floors + grade + yr_built +
+                                           yr_renovated + waterfront + condition + 
+                                           view + dist_cbd_km + EHD_percen + 
+                                           low + high))
+```
+
+```{r}
+SEM_seed <- errorsarlm(mod3, data = kc_house_data_4444, listw = kc_house_data_4444_W, 
+                       Durbin = FALSE)
+```
+
+```{r}
+summary(impacts(SDEM_seed), zstats = TRUE)
+```
+
+```{r}
+huxreg("SEM" = SEM_seed, "OLS" = hedon3_seed, 
+    error_format = "[{statistic}]",
+    note = "{stars}. T statistic in brackets.")
+```
+
+```{r}
+LR.Sarlm(SDEM_seed, SEM_seed)
+LR.Sarlm(SDEM_seed, SLX_seed)
+```
+
+```{r}
+LR1.Sarlm(SDEM_seed)
+```
+
+```{r}
+Hausman.test(SEM_seed)
+```
+
+```{r}
+bptest.Sarlm(SEM_seed, studentize = TRUE)
+```
+
+```{r}
+moran.plot(residuals(hedon3_seed), listw = kc_house_data_4444_W10)
+```
+
+```{r}
+moran.plot(residuals(SDEM_seed), listw = kc_house_data_4444_W10)
+```
+
+```{r}
+moran.test(residuals(SDEM_seed), listw = kc_house_data_4444_W10)
+```
+
+# Oppgave 9
+
+```{r}
+set.seed(420)
+kc_houses_env_var_omit_2000 <- kc_houses_env_var_omit[sample(1:nrow(
+    kc_houses_env_var_omit), 2000, replace = FALSE), ]
+```
+
+```{r}
+hedon3_2000 <- lm(mod3, data = kc_houses_env_var_omit_2000)
+```
+
+```{r}
+huxreg("Full" = hedon3, "2000 Seed" = hedon3_2000, "666 Seed" = hedon3_seed, 
+    error_format = "[{statistic}]",
+    note = "{stars}. T statistic in brackets.")
+```
+
+```{r}
+kc_house_data_2000_mat_nb <- knearneigh(kc_houses_env_var_omit_2000, k = 3)
+kc_house_data_2000_nb <- knn2nb(kc_house_data_2000_mat_nb)
+kc_house_data_2000_W <- nb2listw(kc_house_data_2000_nb, style = "W")
+kc_house_data_2000_mat_nb10 <- knearneigh(kc_houses_env_var_omit_2000, k = 10)
+kc_house_data_2000_nb10 <- knn2nb(kc_house_data_2000_mat_nb10)
+kc_house_data_2000_W10 <- nb2listw(kc_house_data_2000_nb10, style = "W")
+```
+
+```{r}
+lm.morantest(hedon3_2000, kc_house_data_2000_W)
+lm.morantest(hedon3_2000, kc_house_data_2000_W10)
+```
+
+```{r}
+moran.plot(log(kc_houses_env_var_omit_2000$price), listw = kc_house_data_2000_W, labels = FALSE, pch = 20, cex = 0.3)
+```
+
+```{r}
+moran.plot(log(kc_houses_env_var_omit_2000$price), listw = kc_house_data_2000_W10, labels = FALSE, pch = 20, cex = 0.3)
+```
+
+```{r}
+kc_lagrange_3_2000 <- lm.LMtests(hedon3_2000, kc_house_data_2000_W, 
+               test = "all")
+kc_lagrange_3_2000
+```
+
+```{r}
+kc_lagrange_10_2000 <- lm.LMtests(hedon3_2000, kc_house_data_2000_W10, 
+               test = "all")
+kc_lagrange_10_2000
+```
+
+```{r}
+SDEM_2000 <- errorsarlm(mod3, data = kc_houses_env_var_omit_2000, listw = kc_house_data_2000_W, 
+                        Durbin = as.formula(~ bedrooms + bathrooms + sqft_living + sqft_living15 +
+                                                sqft_lot + sqft_lot15 + 
+                                                sqft_above + floors + grade + yr_built + 
+                                                yr_renovated + waterfront + condition + 
+                                                view + dist_cbd_km + EHD_percen + 
+                                                low + high))
+```
+
+```{r}
+SLX_2000 <- lmSLX(mod3, data = kc_houses_env_var_omit_2000, listw = kc_house_data_2000_W, 
+                  Durbin =  as.formula(~ bedrooms + bathrooms + sqft_living + sqft_living15 +
+                                           sqft_lot + sqft_lot15 + sqft_above + floors + grade +
+                                           yr_built + yr_renovated + waterfront + condition +
+                                           view + dist_cbd_km + EHD_percen + low + high))
+```
+
+```{r, cache=TRUE}
+SEM_2000 <- errorsarlm(mod3, data = kc_houses_env_var_omit_2000, listw = kc_house_data_2000_W, 
+                       Durbin = FALSE)
+```
+
+```{r}
+summary(impacts(SDEM_2000), zstats = TRUE)
+```
+
+```{r}
+huxreg("SEM" = SEM_2000, "OLS" = hedon3_2000, 
+    error_format = "[{statistic}]",
+    note = "{stars}. T statistic in brackets.")
+```
+
+```{r}
+LR.Sarlm(SDEM_2000, SEM_2000)
+LR.Sarlm(SDEM_2000, SLX_2000)
+```
+
+```{r}
+LR1.Sarlm(SDEM_2000)
+```
+
+```{r}
+Hausman.test(SEM_2000)
+```
+
+```{r}
+bptest.Sarlm(SEM_2000, studentize = TRUE)
+```
+
+```{r}
+moran.plot(residuals(hedon3_2000), listw = kc_house_data_2000_W10)
+```
+
+```{r}
+moran.plot(residuals(SDEM_2000), listw = kc_house_data_2000_W10)
+```
+
+```{r}
+moran.test(residuals(SDEM_2000), listw = kc_house_data_2000_W10)
+```
+
+# Oppgave 10 - Konklusjon
+
+
+
 
