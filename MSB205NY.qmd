@@ -111,11 +111,15 @@ kc_house_data_sf <-  kc_house_data_sf %>%
 
 # Oppgave 3
 
+## i.
+
 ```{r}
 kc_wadoh_map <- here("maps/WADOH_Environmental_Health_Disparities_Index_Calculated_for_King_County___wadohehdindex_area /WADOH_Environmental_Health_Disparities_Index_Calculated_for_King_County___wadohehdindex_area.shp") %>% 
       st_read() %>% 
   st_transform(2926)
 ```
+
+## ii.
 
 ```{r}
 kc_wadoh_map <- kc_wadoh_map %>% 
@@ -143,10 +147,14 @@ kc_wadoh_map <- kc_wadoh_map %>%
   )
 ```
 
+## iii.
+
 ```{r}
 asc_b19101_fam_inc <- read.dbf("maps/censusSHP/acs_b19101_familyincome.dbf")
 attach(asc_b19101_fam_inc)
 ```
+
+## iv.
 
 ```{r}
 asc_b19101_fam_inc <- asc_b19101_fam_inc %>% 
@@ -299,15 +307,19 @@ Små og billige:
 
 ![](screen/LL10.png)
 
+## v.
+
+Valgfritt - MANGLER
+
 # Oppgave 6
 
 ## i. Funn fra EDA*
 
-
+MANGLER
 
 ## ii. Hedoniske modeller
 
-### Huskarakteristika og tids-dummier
+### 1. Huskarakteristika og tids-dummier
 
 ```{r, message=FALSE}
 attach(kc_houses_env_var_omit)
@@ -317,13 +329,13 @@ attach(kc_houses_env_var_omit)
 mod1 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month"
 ```
 
-### Huskarakteristika, dist_CBD, tract-variabler og tids-dummier
+### 2. Huskarakteristika, dist_CBD, tract-variabler og tids-dummier
 
 ```{r}
 mod2 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month + dist_cbd_km + linguist_2 + poverty_pe + POC_percen + unemploy_2 + sen_pop_pe + facilities + wastewater + traffic_pe + diesel + superfund + transporta + housing_pe + ozone + PM25 + toxic_rele + hazardous_ + lead_perce + socio_perc"
 ```
 
-### Huskarakteristika, dist_CBD, EHD og tids-dummier
+### 3. Huskarakteristika, dist_CBD, EHD og tids-dummier
 
 ```{r}
 mod3 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_living15 + sqft_lot + sqft_lot15 + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high + year_month"
@@ -407,6 +419,8 @@ Etter å ha utført en simultan test på tids-dummyene så kan vi avgjøre at di
 
 # Oppgave 8
 
+# i.
+
 ```{r}
 kc_house_data_4444 <- here("data/kc_house_data_4444_Jonathan_og_Daniel.gpkg") %>% 
   st_read() %>% 
@@ -424,6 +438,8 @@ kc_house_data_4444 <- kc_house_data_4444 %>%
            mid = inc_fam_med_per,
            high = inc_fam_high_per)
 ```
+
+## ii + iii.
 
 ```{r}
 hedon3_seed <- lm(mod3, data = kc_house_data_4444)
@@ -460,6 +476,8 @@ moran.plot(log(kc_house_data_4444$price), listw = kc_house_data_4444_W, labels =
 moran.plot(log(kc_house_data_4444$price), listw = kc_house_data_4444_W10, labels = FALSE, pch = 20, cex = 0.3)
 ```
 
+## iv.
+
 ```{r}
 kc_lagrange_3 <- lm.LMtests(hedon3_seed, kc_house_data_4444_W, 
                test = "all")
@@ -471,6 +489,8 @@ kc_lagrange_10 <- lm.LMtests(hedon3_seed, kc_house_data_4444_W10,
                test = "all")
 kc_lagrange_10
 ```
+
+## v.
 
 ```{r}
 SDEM_seed <- errorsarlm(mod3, data = kc_house_data_4444, listw = kc_house_data_4444_W,
@@ -524,6 +544,8 @@ Hausman.test(SEM_seed)
 bptest.Sarlm(SEM_seed, studentize = TRUE)
 ```
 
+## vi.
+
 ```{r}
 moran.plot(residuals(hedon3_seed), listw = kc_house_data_4444_W10)
 ```
@@ -537,6 +559,8 @@ moran.test(residuals(SDEM_seed), listw = kc_house_data_4444_W10)
 ```
 
 # Oppgave 9
+
+## i.
 
 ```{r}
 set.seed(420)
@@ -553,6 +577,8 @@ huxreg("Full" = hedon3, "2000 Seed" = hedon3_2000, "666 Seed" = hedon3_seed,
     error_format = "[{statistic}]",
     note = "{stars}. T statistic in brackets.")
 ```
+
+## ii.
 
 ```{r}
 kc_house_data_2000_mat_nb <- knearneigh(kc_houses_env_var_omit_2000, k = 3)
@@ -649,6 +675,16 @@ moran.plot(residuals(SDEM_2000), listw = kc_house_data_2000_W10)
 ```{r}
 moran.test(residuals(SDEM_2000), listw = kc_house_data_2000_W10)
 ```
+
+## iii.
+
+MANGLER
+
+## iv. 
+
+MANGLER
+
+
 
 # Oppgave 10 - Konklusjon
 
