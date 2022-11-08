@@ -147,14 +147,12 @@ kc_wadoh_map <- kc_wadoh_map %>%
   )
 ```
 
-## iii.
-
 ```{r}
 asc_b19101_fam_inc <- read.dbf("maps/censusSHP/acs_b19101_familyincome.dbf")
 attach(asc_b19101_fam_inc)
 ```
 
-## iv.
+
 
 ```{r}
 asc_b19101_fam_inc <- asc_b19101_fam_inc %>% 
@@ -170,6 +168,8 @@ asc_b19101_fam_inc <- asc_b19101_fam_inc %>%
     select(GEOIDTRT, low, mid, high) %>% 
     rename(GEO_ID_TRT = GEOIDTRT)
 ```
+
+## vii.
 
 ```{r}
 kc_wadoh_map_2 <- left_join(
