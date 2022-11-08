@@ -33,22 +33,17 @@ options(scipen = 777)
 
 # Oppgave 1 - Artikkelsammendrag
 
-Dette sammendraget fokuserer på Bishop et al. (2020) sin artikkel som tar for seg hedoniske eiendomsverdimodeller som den beste praksisen når formålet er å måle husholdningens betalingsvillighet for en endring i en miljøfasilitet. Her estimerer man en fleksibel boligprisfunksjon, som er hentet fra data om salgspriser og fysiske attributter ved boligen, som videre deriveres for å tolke fasilitetenes sine implisitte priser. Disse implisitte prisene kan da benyttes til å framskaffe husholdningens marginale betalingsvillighet (MWTP). Datamateriale fra boligmarkeder i avanserte økonomier sine storbyer er benyttet for å etablere de beste praksisene for hedonisk modellformulering.
-Rosen´s (1974) første og andre steg er ansett som de to beste praksisene for den hedoniske modellen. 
+Dette sammendraget fokuserer på Bishop et al. (2020) sin artikkel som tar for seg hedoniske eiendomsverdimodeller som den beste praksisen når formålet er å måle husholdningens betalingsvillighet for en endring i en miljøfasilitet. Her estimerer man en fleksibel boligprisfunksjon, som er hentet fra data om salgspriser og fysiske attributter ved boligen, som videre deriveres for å tolke fasilitetenes sine implisitte priser. Disse implisitte prisene kan da benyttes til å framskaffe husholdningens marginale betalingsvillighet (MWTP). Datamateriale fra boligmarkeder i avanserte økonomier sine storbyer er benyttet for å etablere de beste praksisene for hedonisk modellformulering. Rosen´s (1974) første og andre steg er ansett som de to beste praksisene for den hedoniske modellen.
 
 Det første steget omhandler definisjonen av markedet. Her tar man for seg logikken av den hedoniske modellformuleringen om at markedet skal være definert slik at det tilfredsstiller prinsippet om loven av en prisfunksjon (*law of one price function*).Dette vil si at salg av identiske boliger vil ta for seg like priser gjennom det bestemte boligmarkedet.Når markedet er definert så vil man kunne gå over til Rosen´s andre steg, som er å samle inn data. Den beste praksisen, altså gullstandarden for datasamlingen innen hedoniske eiendomsverdistudier er å anskaffe et tilfeldig utvalg av prisene til boligtransaksjonene, i tillegg til karakteristika av det relevante studieområdet.
 
-Rosen´s presenterte i 1974 det hedoniske rammeverket som en likevekts modell.
-Den hedoniske modellen i en slik forstand tar for seg informasjonen om tilbudet av boliger (dette inkluderer også eiendomsutviklere sine planer om fremtidige boligprosjekter) og faktorer som påvirker videresalg av allerede eksisterende boliger. Når transaksjonskostnadene har blitt inngått mellom kjøpere og selgere, vil markedslikevekten oppstå når husholdningene ikke lengre kan øke sin nytte ved å flytte.
-Dette vil si at en slik likevekt tar for seg forholdet mellom prisene på boliger og boligkarakteristika, som resulterer i hver kjøper sin marginale betalingsvillighet for hvert karakteristikum ved boligen.
+Rosen´s presenterte i 1974 det hedoniske rammeverket som en likevekts modell. Den hedoniske modellen i en slik forstand tar for seg informasjonen om tilbudet av boliger (dette inkluderer også eiendomsutviklere sine planer om fremtidige boligprosjekter) og faktorer som påvirker videresalg av allerede eksisterende boliger. Når transaksjonskostnadene har blitt inngått mellom kjøpere og selgere, vil markedslikevekten oppstå når husholdningene ikke lengre kan øke sin nytte ved å flytte. Dette vil si at en slik likevekt tar for seg forholdet mellom prisene på boliger og boligkarakteristika, som resulterer i hver kjøper sin marginale betalingsvillighet for hvert karakteristikum ved boligen.
 
-Den marginale betalingsvilligheten for en miljøegenskap kan avsløres gjennom å benytte boligpris-fasilitetsfunksjonen. Denne framviser boligpriser som en funksjon av målet på en bestemt fasilitet, gjennom å holde andre faktorer konstante. Funksjonen vil være stigende, og for å avsløre hver husholdnings MWTP for denne bestemte fasiliteten legger man til individuelle bud rentekurver til den stigende funksjonen.
-Hver av disse bud rentekurvene vil representere det maksimale den bestemte husholdningen er villig til å betale og kjøpene vil dermed inntreffe der bud rentekurven tangerer med prisfunksjonen.
+Den marginale betalingsvilligheten for en miljøegenskap kan avsløres gjennom å benytte boligpris-fasilitetsfunksjonen. Denne framviser boligpriser som en funksjon av målet på en bestemt fasilitet, gjennom å holde andre faktorer konstante. Funksjonen vil være stigende, og for å avsløre hver husholdnings MWTP for denne bestemte fasiliteten legger man til individuelle bud rentekurver til den stigende funksjonen. Hver av disse bud rentekurvene vil representere det maksimale den bestemte husholdningen er villig til å betale og kjøpene vil dermed inntreffe der bud rentekurven tangerer med prisfunksjonen.
 
 Med henhold til loven om en prisfunksjon, vil det være essensielt å definere boligmarkedet som et bestemt storbyområde og studere dette over en kort tidshorisont. Grunnlaget til dette ligger i flyttekostnader, som kan medføre brudd ovenfor denne prisfunksjonen.
 
-Dersom vi ser på en husholdning som velger å flytte innenfor et bestemt storbyområde, vil man se at disse type flyttekostnader tenderer til å forbli nokså like gjennom dette området.Dette gjelder både de finansielle- og psykologiske kostnadene som flytting medfører. Finansielle kostnader slikt som eiendomsmegler honorarer og lastebilutleie er antatt til å ha lav variasjon innenfor det bestemte området.
-På samme måte vil de psykologiske kostnadene ved flytting ikke være like belastende når dette skjer innenfor storbyområdet. Eksempelvis, husholdningens mulighet til å opprettholde kontakt til familie, venner og nabolag. Dermed kan vi se at loven om en prisfunksjon kan opprettholdes gjennom en arbitrasje, ved a en boligkjøper ikke hadde valgt å kjøpe en bolig i et storbyområde dersom han kunne kjøpt et identisk hus til en lavere pris i det samme området.
+Dersom vi ser på en husholdning som velger å flytte innenfor et bestemt storbyområde, vil man se at disse type flyttekostnader tenderer til å forbli nokså like gjennom dette området.Dette gjelder både de finansielle- og psykologiske kostnadene som flytting medfører. Finansielle kostnader slikt som eiendomsmegler honorarer og lastebilutleie er antatt til å ha lav variasjon innenfor det bestemte området. På samme måte vil de psykologiske kostnadene ved flytting ikke være like belastende når dette skjer innenfor storbyområdet. Eksempelvis, husholdningens mulighet til å opprettholde kontakt til familie, venner og nabolag. Dermed kan vi se at loven om en prisfunksjon kan opprettholdes gjennom en arbitrasje, ved a en boligkjøper ikke hadde valgt å kjøpe en bolig i et storbyområde dersom han kunne kjøpt et identisk hus til en lavere pris i det samme området.
 
 Man kan også ta for seg utfordringene som kan oppstå dersom man hadde valgt å ta for seg å definere markedet med flere byområder.Her vil en grunnleggende utfordring være at det fremkommer større flyttekostnader mellom ulike byområder. Den hedoniske eiendomsverdimodellen ignorerer både arbeidsmarkedshensyn og heterogene flyttekostnader, som medfører at dersom man definerer gjennom flere storbyområder vil dette begrense modellens evne til å gjøre om hedoniske priser om til MWTP-mål.
 
@@ -152,8 +147,6 @@ asc_b19101_fam_inc <- read.dbf("maps/censusSHP/acs_b19101_familyincome.dbf")
 attach(asc_b19101_fam_inc)
 ```
 
-
-
 ```{r}
 asc_b19101_fam_inc <- asc_b19101_fam_inc %>% 
     mutate(low = (E19101138 + E19101139 + E19101140 + E19101141 + 
@@ -228,7 +221,7 @@ summary(kc_tracts10_shore_env_var)
 
 ## ii.
 
-Etter å ha plassert husdataene, **tracts 10** og **tracts10_shore** inn i QGIS kan vi se at **tracts10_shore** har med havet, noe **tracts10** ikke har. Dette medfører at flere av observasjonene (25 stk.) havner i havet og dermed blir til NA-verdier. 
+Etter å ha plassert husdataene, **tracts 10** og **tracts10_shore** inn i QGIS kan vi se at **tracts10_shore** har med havet, noe **tracts10** ikke har. Dette medfører at flere av observasjonene (25 stk.) havner i havet og dermed blir til NA-verdier.
 
 ## iii.
 
@@ -313,7 +306,7 @@ Valgfritt - MANGLER
 
 # Oppgave 6
 
-## i. Funn fra EDA*
+## i. Funn fra EDA\*
 
 MANGLER
 
@@ -389,7 +382,6 @@ hedon1 %>%
                      white_adjust = hc3)
 ```
 
-
 ```{r}
 hedon2 %>% 
     linearHypothesis(c("year_month2014-06=0", "year_month2014-07=0",
@@ -400,7 +392,6 @@ hedon2 %>%
                        "year_month2015-04=0", "year_month2015-05=0"),
                      white_adjust = hc4)
 ```
-
 
 ```{r}
 hedon3 %>% 
@@ -415,7 +406,7 @@ hedon3 %>%
 
 **Konklusjon:**
 
-Etter å ha utført en simultan test på tids-dummyene så kan vi avgjøre at disse er nødvendige for modellen. Nullhypotesen er om det ikke vil være noen forskjell i salgspris ved ulike tidspunkt for salg. Men testene våre fremviser signifikante F- og P-verdier som medfører at vi forkaster denne nullhypotesen. Konklusjonen vil dermed være at det faktisk fremkommer en forskjell i salgspris ved forskjellige tidspunkt for salg. 
+Etter å ha utført en simultan test på tids-dummyene så kan vi avgjøre at disse er nødvendige for modellen. Nullhypotesen er om det ikke vil være noen forskjell i salgspris ved ulike tidspunkt for salg. Men testene våre fremviser signifikante F- og P-verdier som medfører at vi forkaster denne nullhypotesen. Konklusjonen vil dermed være at det faktisk fremkommer en forskjell i salgspris ved forskjellige tidspunkt for salg.
 
 # Oppgave 8
 
@@ -680,17 +671,10 @@ moran.test(residuals(SDEM_2000), listw = kc_house_data_2000_W10)
 
 MANGLER
 
-## iv. 
+## iv.
 
 MANGLER
 
-
-
 # Oppgave 10 - Konklusjon
 
-
-
 # References
-
-
-
