@@ -345,7 +345,7 @@ Små og billige:
 
 ## v.
 
-Valgfritt - MANGLER
+Valgfritt - Eksperimentere med innledende SAR, SEM og Lm modeller i GeoDa
 
 # Oppgave 6
 
@@ -725,11 +725,11 @@ Man ser at SDEM fortsatt er den beste modellen.
 
 ## iv.
 
-MANGLER
+Vil si de er kvalitativt like, da det ikke er store forskjeller på datasettene.
 
 # Oppgave 10 - Konklusjon
 
-Vi får noe svakere Moran I verdi ved tilfeldig utvalg, men vi ser at det ikke er stor forskjell ved et tilfeldig utvalg sammenlignet med et definert utvalg.
+Vi får noe svakere verdi ved tilfeldig utvalg, men vi ser at det ikke er stor forskjell ved et tilfeldig utvalg sammenlignet med et definert utvalg.
 SDEM fremstår som den foretrukne modellen for datasettene.
 
 # References
