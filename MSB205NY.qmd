@@ -31,6 +31,8 @@ library(ragg)
 options(scipen = 777)
 ```
 
+"Data provided by permission of King County" ^ [@county2016house].
+
 # Oppgave 1 - Artikkelsammendrag
 
 ## a. Explain what is meant by Rosen´s first and second stage.
